@@ -5,8 +5,6 @@ Version:	1.06
 Release:	2
 License:	GPL
 Group:		Base
-Group(de):	Gründsätzlich
-Group(pl):	Podstawowe
 Source0:	http://www.urbanmyth.org/microcode/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 URL:		http://www.urbanmyth.org/microcode/
