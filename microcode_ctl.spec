@@ -41,7 +41,7 @@ stary mikrokod.
 %setup -q
 
 %build
-%{__cc} -Wall -I%{_prefix}/src/linux %{rpmcflags} %{rpmldflags}\
+%{__cc} -Wall -I%{_kernelsrcdir}/include %{rpmcflags} %{rpmldflags}\
 	microcode_ctl.c -o microcode_ctl
 
 %install
