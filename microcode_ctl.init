@@ -1,8 +1,8 @@
 #!/bin/sh
 #
-# microcode_ctl: Update Microcode for IA32
-# chkconfig:     2345 1 99
-# description:	 Update Microcode for IA32 family processors
+# microcode_ctl:	Update Microcode for IA32
+# chkconfig:		2345 1 99
+# description:		Update Microcode for IA32 family processors
 #
 # $Id$
 
@@ -24,22 +24,22 @@ case "$1" in
 		msg_already_running microcode_ctl
 		exit 1
 	fi
-        ;;
+	;;
   stop)
-  		[  -f /var/lock/subsys/microcode_ctl ] && rm -f /var/lock/subsys/microcode_ctl
-  		exit 0
-        ;;
+	[ -f /var/lock/subsys/microcode_ctl ] && rm -f /var/lock/subsys/microcode_ctl
+	exit 0
+	;;
   restart|reload|force-reload)
-  	$0 stop
+	$0 stop
 	$0 start
-        ;;
+	;;
   status)
 	status microcode_ctl
 	RETVAL=$?
-        ;;
+	;;
   *)
-	msg_usage "$0 {start|status|restart|reload|force-reload}"
-        exit 1
+	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
+	exit 1
 esac
 
 exit $RETVAL
