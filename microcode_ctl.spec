@@ -13,7 +13,7 @@ URL:		http://www.urbanmyth.org/microcode/
 Conflicts:	kernel < 2.2.0
 Prereq:		/sbin/chkconfig
 Requires:	rc-scripts
-BuildArch:	%{ix86}
+ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
