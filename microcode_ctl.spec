@@ -71,6 +71,6 @@ fi
 %defattr(644,root,root,755)
 %doc README Change*
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
-%attr(640,root,root) %config %{_sysconfdir}/microcode.dat
+%attr(640,root,root) %config(noreplace) %{_sysconfdir}/microcode.dat
 %attr(755,root,root) %{_sbindir}/*
 %{_mandir}/man?/*
