@@ -29,7 +29,7 @@ it reverts back to the old microcode.
 
 %description -l pl
 Narzêdzie bêd±ce dodatkiem do sterownika mikrokodu IA32. Program
-dekoduje i wys³a nowy mikrokod do j±dra systemu w celu za³adowania go
+dekoduje i wysy³a nowy mikrokod do j±dra systemu w celu za³adowania go
 do jednego z procesorów rodziny IA32 (Pentium Pro, PII, Celeron, PIII,
 Xeon, Pentium 4 itd.). Ponadto wysy³any jest sygna³ do j±dra by to
 zwolni³o wszystkie bufory.
