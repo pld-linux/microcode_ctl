@@ -12,6 +12,7 @@ Source1:	%{name}.init
 URL:		http://www.urbanmyth.org/microcode/
 Conflicts:	kernel < 2.2.0
 Prereq:		/sbin/chkconfig
+Requires:	rc-scripts
 BuildArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,15 +47,14 @@ gcc -Wall -I%{_prefix}/src/linux %{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8}
+install -d $RPM_BUILD_ROOT{/etc/rc.d/init.d,%{_sbindir},%{_mandir}/man8}
 
-install	%{name}		$RPM_BUILD_ROOT%{_sbindir}
-install %{name}.8	$RPM_BUILD_ROOT%{_mandir}/man8/
+install	%{name} $RPM_BUILD_ROOT%{_sbindir}
+install %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8/
 install intel-ia32microcode-17Jan2001.txt \
-			$RPM_BUILD_ROOT%{_sysconfdir}/microcode.dat
+	$RPM_BUILD_ROOT%{_sysconfdir}/microcode.dat
 
-install %{SOURCE1}	$RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/%{name}
 
 gzip -9nf README Change*
 
