@@ -9,9 +9,9 @@ Source0:	http://www.urbanmyth.org/microcode/%{name}-%{version}.tar.gz
 # Source0-md5:	4008903ba66e88e4eccca4256363cf30
 Source1:	%{name}.init
 URL:		http://www.urbanmyth.org/microcode/
+PreReq:		rc-scripts
+Requires(post,preun):	/sbin/chkconfig
 Conflicts:	kernel < 2.2.0
-Prereq:		rc-scripts
-Prereq:		/sbin/chkconfig
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,7 +50,7 @@ install -d $RPM_BUILD_ROOT/etc/rc.d/init.d
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8}
 
 install	%{name} $RPM_BUILD_ROOT%{_sbindir}
-install %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8/
+install %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8
 install intel-ia32microcode-*.txt \
 	$RPM_BUILD_ROOT%{_sysconfdir}/microcode.dat
 
