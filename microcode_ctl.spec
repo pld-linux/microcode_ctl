@@ -62,10 +62,12 @@ gzip -9nf README Change*
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%chkconfig_add
+/sbin/chkconfig --add %{name}
 
 %preun
-%chkconfig_del
+if [ "$1" = "0" ]; then
+        /sbin/chkconfig --del %{name}
+fi
 
 %files
 %defattr(644,root,root,755)
