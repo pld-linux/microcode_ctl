@@ -2,7 +2,7 @@ Summary:	Intel IA32 CPU Microcode Utility
 Summary(pl):	Aktualizator Mikrokodu Intel IA32 CPU
 Name:		microcode_ctl
 Version:	1.06
-Release:	1
+Release:	2
 License:	GPL
 Group:		Base
 Group(de):	Gründsätzlich
@@ -11,7 +11,8 @@ Source0:	http://www.urbanmyth.org/microcode/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 URL:		http://www.urbanmyth.org/microcode/
 Conflicts:	kernel < 2.2.0
-Requires:	rc-scripts
+Prereq:		rc-scripts
+Prereq:		/sbin/chkconfig
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
