@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		Base
 Source0:	http://www.urbanmyth.org/microcode/%{name}-%{version}.tar.gz
+# Source0-md5:	4008903ba66e88e4eccca4256363cf30
 Source1:	%{name}.init
 URL:		http://www.urbanmyth.org/microcode/
 Conflicts:	kernel < 2.2.0
