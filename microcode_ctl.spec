@@ -1,14 +1,13 @@
 Summary:	Intel IA32 CPU Microcode Utility
 Summary(pl):	Aktualizator Mikrokodu Intel IA32 CPU
 Name:		microcode_ctl
-Version:	1.09
+Version:	1.10
 Release:	1
 License:	GPL
 Group:		Base
 Source0:	http://www.urbanmyth.org/microcode/%{name}-%{version}.tar.gz
-# Source0-md5:	8756a689465c633a00e0f6f3507b675d
+# Source0-md5:	ff8be753e5d5d7275495b7c99bdd55f3
 Source1:	%{name}.init
-Patch0:		%{name}-llh.patch
 URL:		http://www.urbanmyth.org/microcode/
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
@@ -40,7 +39,6 @@ stary mikrokod.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__cc} %{rpmldflags} %{rpmcflags} -Wall \
