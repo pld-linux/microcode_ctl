@@ -10,6 +10,7 @@
 # Source function library
 . /etc/rc.d/init.d/functions
 
+RETVAL=0
 # See how we were called.
 case "$1" in
   start)
@@ -22,28 +23,26 @@ case "$1" in
 	else
 		# show "%s service is already running." microcode_ctl
 		msg_already_running microcode_ctl
-		exit 1
 	fi
 	;;
   stop)
 	[ -f /var/lock/subsys/microcode_ctl ] && rm -f /var/lock/subsys/microcode_ctl
-	exit 0
 	;;
   restart|reload|force-reload)
 	$0 stop
 	$0 start
+	exit $?
 	;;
   status)
 	status microcode_ctl
-	RETVAL=$?
+	exit $?
 	;;
   *)
 	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
-	exit 1
+	exit 3
 esac
 
 exit $RETVAL
 
 # This must be last line !
 # vi:syntax=sh:tw=78:ts=8:sw=4
-
