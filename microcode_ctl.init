@@ -26,9 +26,11 @@ case "$1" in
 	fi
         ;;
   stop)
+  		[  -f /var/lock/subsys/microcode_ctl ] && rm -f /var/lock/subsys/microcode_ctl
   		exit 0
         ;;
   restart|reload|force-reload)
+  	$0 stop
 	$0 start
         ;;
   status)
