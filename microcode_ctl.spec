@@ -42,7 +42,7 @@ stary mikrokod.
 %setup -q
 
 %build
-%{__cc} -Wall -I%{_prefix}/src/linux %{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} \
+%{__cc} -Wall -I%{_prefix}/src/linux %{rpmcflags} \
 	microcode_ctl.c -o microcode_ctl
 
 %install
