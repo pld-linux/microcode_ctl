@@ -55,8 +55,6 @@ install intel-ia32microcode-*.txt \
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/%{name}
 
-gzip -9nf README Change*
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -70,7 +68,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README Change*
 %attr(754,root,root) %{_sysconfdir}/rc.d/init.d/%{name}
 %attr(640,root,root) %config %{_sysconfdir}/microcode.dat
 %attr(755,root,root) %{_sbindir}/*
