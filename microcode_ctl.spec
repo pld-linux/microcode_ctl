@@ -3,10 +3,10 @@ Summary(pl):	Aktualizator Mikrokodu Intel IA32 CPU
 Name:		microcode_ctl
 Version:	1.04
 Release:	1
+License:	GPL
 Group:		Base
 Group(de):	Gründsätzlich
 Group(pl):	Podstawowe
-License:	GPL
 Source0:	http://www.urbanmyth.org/microcode/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 URL:		http://www.urbanmyth.org/microcode/
@@ -39,10 +39,10 @@ tzn. nie jest to trwa³a aktualizacja. Po restarcie procesor zawiera
 stary mikrokod.
 
 %prep
-%setup	-q
+%setup -q
 
 %build
-gcc -Wall -I%{_prefix}/src/linux %{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} \
+%{__cc} -Wall -I%{_prefix}/src/linux %{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} \
 	microcode_ctl.c -o microcode_ctl
 
 %install
