@@ -45,7 +45,7 @@ stary mikrokod.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d
+install -d $RPM_BUILD_ROOT/etc/rc.d/init.d
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8}
 
 install	%{name} $RPM_BUILD_ROOT%{_sbindir}
@@ -53,7 +53,7 @@ install %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8/
 install intel-ia32microcode-*.txt \
 	$RPM_BUILD_ROOT%{_sysconfdir}/microcode.dat
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -69,7 +69,7 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc README Change*
-%attr(754,root,root) %{_sysconfdir}/rc.d/init.d/%{name}
+%attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(640,root,root) %config %{_sysconfdir}/microcode.dat
 %attr(755,root,root) %{_sbindir}/*
 %{_mandir}/man?/*
