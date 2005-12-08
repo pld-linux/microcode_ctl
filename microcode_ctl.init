@@ -21,7 +21,6 @@ case "$1" in
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/microcode_ctl
 	else
-		# show "%s service is already running." microcode_ctl
 		msg_already_running microcode_ctl
 	fi
 	;;
