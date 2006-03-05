@@ -64,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %preun
 if [ "$1" = "0" ]; then
-        /sbin/chkconfig --del %{name}
+	/sbin/chkconfig --del %{name}
 fi
 
 %files
