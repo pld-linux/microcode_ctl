@@ -16,6 +16,7 @@ case "$1" in
   start)
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/microcode_ctl ]; then
+	    	modprobe -s microcode
 		msg_starting "IA32 Microcode Update"
 		daemon /usr/sbin/microcode_ctl -u
 		RETVAL=$?
