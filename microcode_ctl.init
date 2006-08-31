@@ -16,8 +16,8 @@ case "$1" in
   start)
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/microcode_ctl ]; then
-	    	modprobe -s microcode
 		msg_starting "IA32 Microcode Update"
+		_modprobe -s microcode
 		daemon /usr/sbin/microcode_ctl -u
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/microcode_ctl
@@ -45,4 +45,4 @@ esac
 exit $RETVAL
 
 # This must be last line !
-# vi:syntax=sh:tw=78:ts=8:sw=4
+# vi:syntax=sh:tw=78
