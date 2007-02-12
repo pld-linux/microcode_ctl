@@ -1,5 +1,5 @@
 Summary:	Intel IA32 CPU Microcode Utility
-Summary(pl):	Aktualizator mikrokodu procesorów Intel IA32
+Summary(pl.UTF-8):   Aktualizator mikrokodu procesorÃ³w Intel IA32
 Name:		microcode_ctl
 Version:	1.15
 Release:	1
@@ -26,15 +26,15 @@ The microcode update is volatile and needs to be uploaded on each
 system boot i.e. it doesn't reflash your cpu permanently, reboot and
 it reverts back to the old microcode.
 
-%description -l pl
-Narzêdzie bêd±ce dodatkiem do sterownika mikrokodu IA32. Program
-dekoduje i wysy³a nowy mikrokod do j±dra systemu w celu za³adowania go
-do jednego z procesorów rodziny IA32 (Pentium Pro, PII, Celeron, PIII,
-Xeon, Pentium 4 itd.). Ponadto wysy³any jest sygna³ do j±dra by to
-zwolni³o wszystkie bufory.
+%description -l pl.UTF-8
+NarzÄ™dzie bÄ™dÄ…ce dodatkiem do sterownika mikrokodu IA32. Program
+dekoduje i wysyÅ‚a nowy mikrokod do jÄ…dra systemu w celu zaÅ‚adowania go
+do jednego z procesorÃ³w rodziny IA32 (Pentium Pro, PII, Celeron, PIII,
+Xeon, Pentium 4 itd.). Ponadto wysyÅ‚any jest sygnaÅ‚ do jÄ…dra by to
+zwolniÅ‚o wszystkie bufory.
 
-Aktualizacja mikrokodu musi byæ dokonywana po ka¿dym restarcie systemu
-tzn. nie jest to trwa³a aktualizacja. Po restarcie procesor zawiera
+Aktualizacja mikrokodu musi byÄ‡ dokonywana po kaÅ¼dym restarcie systemu
+tzn. nie jest to trwaÅ‚a aktualizacja. Po restarcie procesor zawiera
 stary mikrokod.
 
 %prep
