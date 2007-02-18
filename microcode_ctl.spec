@@ -11,6 +11,7 @@ Source1:	%{name}.init
 URL:		http://www.urbanmyth.org/microcode/
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
+Requires:	uname(release) >= 2.6.17
 Conflicts:	kernel < 2.2.0
 ExclusiveArch:	i686 pentium2 pentium3 pentium4 x86_64 ia32e
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
