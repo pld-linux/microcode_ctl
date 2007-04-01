@@ -3,6 +3,7 @@ Summary(pl.UTF-8):	Aktualizator mikrokodu procesorów Intel IA32
 Name:		microcode_ctl
 Version:	1.16
 Release:	1
+Epoch:		1
 License:	GPL
 Group:		Base
 Source0:	http://www.urbanmyth.org/microcode/%{name}-%{version}.tar.gz
