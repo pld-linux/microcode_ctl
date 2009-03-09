@@ -2,7 +2,7 @@ Summary:	Intel IA32 CPU Microcode Utility
 Summary(pl.UTF-8):	Aktualizator mikrokodu procesorów Intel IA32
 Name:		microcode_ctl
 Version:	1.17
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Base
@@ -11,8 +11,8 @@ Source0:	http://www.urbanmyth.org/microcode/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 # http://downloadcenter.intel.com/, enter "xeon", go to generic xeon link,
 # choose Linux as OS and get latest microcode release
-Source2:	http://downloadmirror.intel.com/14303/eng/microcode-20080401.dat
-# Source2-md5:	0918e46d7912ebc40dd59e33e8e78547
+Source2:	http://downloadmirror.intel.com/14303/eng/microcode-20080910.dat
+# Source2-md5:	b12d0df79afe9fc363bd3ed5163eb591
 URL:		http://www.urbanmyth.org/microcode/
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
