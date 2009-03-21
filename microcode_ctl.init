@@ -6,36 +6,47 @@
 #
 # $Id$
 
-
 # Source function library
 . /etc/rc.d/init.d/functions
+
+start() {
+	# Check if the service is already running?
+	if [ -f /var/lock/subsys/microcode_ctl ]; then
+		msg_already_running "IA32 Microcode Update"
+		return
+	fi
+
+	msg_starting "IA32 Microcode Update"
+	_modprobe microcode
+	daemon /usr/sbin/microcode_ctl -u
+	RETVAL=$?
+	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/microcode_ctl
+}
+
+stop() {
+	if [ ! -f /var/lock/subsys/microcode_ctl ]; then
+		msg_not_running "IA32 Microcode Update"
+		return
+	fi
+
+	rm -f /var/lock/subsys/microcode_ctl
+}
 
 RETVAL=0
 # See how we were called.
 case "$1" in
   start)
-	# Check if the service is already running?
-	if [ ! -f /var/lock/subsys/microcode_ctl ]; then
-		msg_starting "IA32 Microcode Update"
-		_modprobe microcode
-		daemon /usr/sbin/microcode_ctl -u
-		RETVAL=$?
-		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/microcode_ctl
-	else
-		msg_already_running microcode_ctl
-	fi
+  	start
 	;;
   stop)
-	[ -f /var/lock/subsys/microcode_ctl ] && rm -f /var/lock/subsys/microcode_ctl
+  	stop
 	;;
   restart|reload|force-reload)
-	$0 stop
-	$0 start
-	exit $?
+	stop
+	start
 	;;
   status)
 	status microcode_ctl
-	exit $?
 	;;
   *)
 	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
@@ -43,6 +54,3 @@ case "$1" in
 esac
 
 exit $RETVAL
-
-# This must be last line !
-# vi:syntax=sh:tw=78
