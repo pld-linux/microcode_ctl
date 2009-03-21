@@ -44,20 +44,23 @@ stary mikrokod.
 
 %prep
 %setup -q
+cp %{SOURCE2} microcode.dat
 
 %build
+if ! grep -q 0x00000000 microcode.dat; then
+	echo >&2 microcode.dat contains giberrish
+	exit 1
+fi
+
 %{__cc} %{rpmldflags} %{rpmcflags} -Wall \
 	microcode_ctl.c -o microcode_ctl
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/etc/rc.d/init.d,%{_sysconfdir}}
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8}
-
+install -d $RPM_BUILD_ROOT{/etc/rc.d/init.d,%{_sysconfdir},%{_sbindir},%{_mandir}/man8}
 install	%{name} $RPM_BUILD_ROOT%{_sbindir}
 install %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8
-install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/microcode.dat
-
+cp -a microcode.dat $RPM_BUILD_ROOT%{_sysconfdir}/microcode.dat
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
 
 %clean
