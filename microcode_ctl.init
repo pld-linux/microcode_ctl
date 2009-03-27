@@ -9,6 +9,11 @@
 # Source function library
 . /etc/rc.d/init.d/functions
 
+# Not supported in vserver
+if is_yes "$VSERVER"; then
+	exit 0
+fi
+
 start() {
 	# Check if the service is already running?
 	if [ -f /var/lock/subsys/microcode_ctl ]; then
