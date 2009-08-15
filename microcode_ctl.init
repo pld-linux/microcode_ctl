@@ -23,7 +23,7 @@ start() {
 
 	msg_starting "IA32 Microcode Update"
 	_modprobe microcode
-	daemon /usr/sbin/microcode_ctl -u
+	daemon /usr/sbin/microcode_ctl -qu -d /dev/cpu/microcode
 	RETVAL=$?
 	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/microcode_ctl
 }
