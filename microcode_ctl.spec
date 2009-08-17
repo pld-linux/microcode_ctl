@@ -14,7 +14,7 @@ Requires(post,preun):	/sbin/chkconfig
 Requires:	microcode-data
 Requires:	rc-scripts
 Requires:	uname(release) >= 2.6.20
-ExclusiveArch:	i686 pentium2 pentium3 pentium4 x86_64 ia32e
+ExclusiveArch:	i686 pentium2 pentium3 pentium4 %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
