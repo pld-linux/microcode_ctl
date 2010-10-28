@@ -23,9 +23,10 @@ start() {
 
 	msg_starting "IA32 Microcode Update"
 	_modprobe microcode
-	daemon /usr/sbin/microcode_ctl -qu -f /lib/firmware/microcode.dat -d /dev/cpu/microcode
+	daemon /usr/sbin/microcode_ctl -qf /lib/firmware/microcode.dat -d /dev/cpu/microcode
 	RETVAL=$?
 	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/microcode_ctl
+	rmmod microcode 2>/dev/null
 }
 
 stop() {
@@ -41,17 +42,23 @@ RETVAL=0
 # See how we were called.
 case "$1" in
   start)
-  	start
+	start
 	;;
   stop)
-  	stop
+	stop
 	;;
   restart|reload|force-reload)
 	stop
 	start
 	;;
   status)
-	status microcode_ctl
+	if [ -f /var/lock/subsys/microcode_ctl ]; then
+		nls "IA32 Microcode Update has been loaded"
+		exit 0
+	else
+		msg_not_running "IA32 Microcode Update"
+		exit 3
+	fi
 	;;
   *)
 	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
