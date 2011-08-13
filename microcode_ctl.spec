@@ -9,6 +9,7 @@ Group:		Base
 Source0:	http://www.urbanmyth.org/microcode/%{name}-%{version}.tar.gz
 # Source0-md5:	98a7f06acef8459c8ef2a1b0fb86a99e
 Source1:	%{name}.init
+Source2:	%{name}.upstart
 URL:		http://www.urbanmyth.org/microcode/
 Requires(post,preun):	/sbin/chkconfig
 Requires:	microcode-data
@@ -48,10 +49,11 @@ stary mikrokod.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/etc/rc.d/init.d,%{_sysconfdir},%{_sbindir},%{_mandir}/man8}
-install	%{name} $RPM_BUILD_ROOT%{_sbindir}
-install %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
+install -d $RPM_BUILD_ROOT{/etc/{rc.d/init.d,init},%{_sysconfdir},%{_sbindir},%{_mandir}/man8}
+install	-p %{name} $RPM_BUILD_ROOT%{_sbindir}
+cp -p %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8
+install -p %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
+cp -p %{SOURCE2} $RPM_BUILD_ROOT/etc/init/%{name}.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -68,5 +70,6 @@ fi
 %defattr(644,root,root,755)
 %doc Changelog README
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
-%attr(755,root,root) %{_sbindir}/*
-%{_mandir}/man?/*
+%config(noreplace) %verify(not md5 mtime size) /etc/init/%{name}.conf
+%attr(755,root,root) %{_sbindir}/microcode_ctl
+%{_mandir}/man8/microcode_ctl.8*

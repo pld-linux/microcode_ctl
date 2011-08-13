@@ -1,0 +1,14 @@
+description "Update Microcode for IA32 family processors"
+
+start on virtual-filesystems
+
+task
+console output
+
+pre-start script
+	/sbin/modprobe microcode
+end script
+
+script
+	/usr/sbin/microcode_ctl -qu -f /lib/firmware/microcode.dat -d /dev/cpu/microcode
+end script
