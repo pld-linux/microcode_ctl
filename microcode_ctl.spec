@@ -1,5 +1,5 @@
-Summary:	Intel IA32 CPU Microcode Utility
-Summary(pl.UTF-8):	Aktualizator mikrokodu procesorów Intel IA32
+Summary:	x86 CPU Microcode Utility
+Summary(pl.UTF-8):	Aktualizator mikrokodu procesorów architektury x86
 Name:		microcode_ctl
 Version:	1.17
 Release:	7
@@ -18,22 +18,22 @@ ExclusiveArch:	i686 pentium2 pentium3 pentium4 %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The microcode_ctl utility is a companion to the IA32 microcode driver.
+The microcode_ctl utility is a companion to the x86 microcode driver.
 The utility has two uses: a) it decodes and sends new microcode to the
-kernel driver to be uploaded to Intel IA32 family processors. (Pentium
-Pro, PII, Celeron, PIII, Xeon Pentium 4 etc.) b) it signals the kernel
-driver to release any buffers it may hold
+kernel driver to be uploaded to Intel IA32 or AMD64 family processors.
+(Pentium Pro, PII, Celeron, PIII, Xeon Pentium 4 etc.) b) it signals
+the kernel driver to release any buffers it may hold.
 
 The microcode update is volatile and needs to be uploaded on each
 system boot i.e. it doesn't reflash your cpu permanently, reboot and
 it reverts back to the old microcode.
 
 %description -l pl.UTF-8
-Narzędzie będące dodatkiem do sterownika mikrokodu IA32. Program
+Narzędzie będące dodatkiem do sterownika mikrokodu x86. Program
 dekoduje i wysyła nowy mikrokod do jądra systemu w celu załadowania go
 do jednego z procesorów rodziny IA32 (Pentium Pro, PII, Celeron, PIII,
-Xeon, Pentium 4 itd.). Ponadto wysyłany jest sygnał do jądra by to
-zwolniło wszystkie bufory.
+Xeon, Pentium 4 itd.) oraz AMD64. Ponadto wysyłany jest sygnał do
+jądra by to zwolniło wszystkie bufory.
 
 Aktualizacja mikrokodu musi być dokonywana po każdym restarcie systemu
 tzn. nie jest to trwała aktualizacja. Po restarcie procesor zawiera
