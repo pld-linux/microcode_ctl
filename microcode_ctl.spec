@@ -2,7 +2,7 @@ Summary:	x86 CPU Microcode Utility
 Summary(pl.UTF-8):	Aktualizator mikrokodu procesorów architektury x86
 Name:		microcode_ctl
 Version:	1.17
-Release:	8
+Release:	9
 Epoch:		1
 License:	GPL
 Group:		Base
@@ -47,7 +47,7 @@ stary mikrokod.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/etc/{rc.d/init.d},%{_sysconfdir},%{_sbindir},%{_mandir}/man8}
+install -d $RPM_BUILD_ROOT{/etc/rc.d/init.d,%{_sysconfdir},%{_sbindir},%{_mandir}/man8}
 install	-p %{name} $RPM_BUILD_ROOT%{_sbindir}
 cp -p %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8
 install -p %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
